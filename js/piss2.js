@@ -1,33 +1,9 @@
-var universe = document.getElementById('universe');
-var ether = universe.getContext('2d');
-universe.width = window.innerWidth;
-universe.height = window.innerHeight;
-
-var myGradient = ether.createLinearGradient(0,0,0,170);
-myGradient.addColorStop(0,'black');
-myGradient.addColorStop(0.5,'red');
-myGradient.addColorStop(1,'white');
-
-ether.fillRect(50, 50, 50, 50);
-
-ether.beginPath();
-ether.fillStyle = myGradient;
-ether.fillRect(100, 100, 50, 50);
-
-ether.beginPath();
-ether.fillStyle = '#00ffff';
-ether.arc(20,20,20,0, Math.PI*2);
-ether.fill();
-
-console.log(ether);
-
-
-"use strict";
+'use strict';
 
 var maxParticles = 20000,
-  particleSize = 1,
-  emissionRate = 20,
-  objectSize = 3; // drawSize of emitter/field
+	particleSize = 1,
+	emissionRate = 20,
+	objectSize = 3; // drawSize of emitter/field
 
 
 var canvas = document.querySelector('canvas');
@@ -79,7 +55,7 @@ function Field(point, mass) {
 
 Field.prototype.setMass = function(mass) {
   this.mass = mass || 100;
-  this.drawColor = mass < 0 ? "#f00" : "#0f0";
+  this.drawColor = mass < 0 ? '#f00' : '#0f0';
 }
 
 function Vector(x, y) {
@@ -108,11 +84,11 @@ function Emitter(point, velocity, spread) {
   this.position = point; // Vector
   this.velocity = velocity; // Vector
   this.spread = spread || Math.PI / 48; // possible angles = velocity +/- spread
-  this.drawColor = "#999"; // So we can tell them apart from Fields later
+  this.drawColor = '#999'; // So we can tell them apart from Fields later
 }
 
 Emitter.prototype.emitParticle = function() {
-  // Use an angle randomized over the spread so we have more of a "spray"
+  // Use an angle randomized over the spread so we have more of a 'spray'
   var angle = this.velocity.getAngle() + this.spread - (Math.random() * this.spread * 2);
 
   // The magnitude of the emitter's velocity
@@ -179,7 +155,8 @@ function drawParticles() {
 function drawCircle(object) {
   ctx.fillStyle = object.drawColor;
   ctx.beginPath();
-  ctx.arc(object.position.x, object.position.y, objectSize, 0, Math.PI * 2);
+  ctx.fillRect(object.position.x-25, object.position.y, 50, 10);
+  //ctx.arc(object.position.x, object.position.y, objectSize, 0, Math.PI * 2);
   ctx.closePath();
   ctx.fill();
 }
@@ -187,7 +164,7 @@ function drawCircle(object) {
 var particles = []; 
 
 var midX = canvas.width / 2;
-var midY = canvas.height; 
+var midY = canvas.height;
 
 // Add one emitter located at `{ x : 100, y : 230}` from the origin (top left)
 // that emits at a velocity of `2` shooting out from the right (angle `0`)

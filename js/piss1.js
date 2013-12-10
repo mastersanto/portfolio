@@ -179,7 +179,8 @@ function drawParticles() {
 function drawCircle(object) {
   ctx.fillStyle = object.drawColor;
   ctx.beginPath();
-  ctx.arc(object.position.x, object.position.y, objectSize, 0, Math.PI * 2);
+  ctx.fillRect(object.position.x-25, object.position.y, 50, 10);
+  //ctx.arc(object.position.x, object.position.y, objectSize, 0, Math.PI * 2);
   ctx.closePath();
   ctx.fill();
 }
